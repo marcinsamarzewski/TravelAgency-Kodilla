@@ -12,5 +12,4 @@ const mapStateToProps = (state, props) => {
     country,
   };
 };
-
 export default connect(mapStateToProps)(Trip);

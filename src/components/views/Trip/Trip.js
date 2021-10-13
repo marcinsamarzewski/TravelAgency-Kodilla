@@ -11,10 +11,11 @@ import DetailsImage from '../../common/DetailsImage/DetailsImage';
 import List from '../../common/List/List';
 import ListItem from '../../common/ListItem/ListItem';
 import OrderForm from '../../features/OrderForm/OrderFormContainer';
+
 import styles from './Trip.module.scss';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 
-const Trip = ({error, name, image, cost, days, description, country, intro}) => {
+const Trip = ({error, id, name, image, cost, days, description, country, intro}) => {
   if(error) return <NotFound />;
   else return (
     <Section>
@@ -67,13 +68,13 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
         </Grid>
       </DetailsBox>
       <Grid>
-  <Row>
-    <Col xs={12}>
-      <PageTitle text='Trip options' />
-      <OrderForm tripCost={cost} />
-    </Col>
-  </Row>
-</Grid>
+        <Row>
+          <Col xs={12}>
+            <PageTitle text='Trip options' />
+            <OrderForm tripCost={cost} tripId={id} tripName={name} countryCode={country.alpha3Code} />
+          </Col>
+        </Row>
+      </Grid>
     </Section>
   );
 };
@@ -85,7 +86,10 @@ Trip.propTypes = {
   days: PropTypes.number,
   description: PropTypes.string,
   country: PropTypes.object,
+  id: PropTypes.string,
   order: PropTypes.string,
+  error: PropTypes.node,
+  intro: PropTypes.node,
 };
 
 export default Trip;

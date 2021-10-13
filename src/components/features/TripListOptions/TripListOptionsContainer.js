@@ -6,14 +6,13 @@ import {getAllFilters, changeSearchPhrase, changeDuration, changeTag} from '../.
 const mapStateToProps = state => ({
   tags: getAllTags(state),
   filters: getAllFilters(state),
-  
 });
 
 const mapDispatchToProps = dispatch => ({
   changeSearchPhrase: phrase => dispatch(changeSearchPhrase(phrase)),
-  // TODO - add more dispatchers for other filters
   changeDuration: payload => dispatch(changeDuration(payload)),
   changeTag: payload => dispatch(changeTag(payload)),
+  // TODO - add more dispatchers for other filters
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripListOptions);

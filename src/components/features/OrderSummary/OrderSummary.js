@@ -16,4 +16,4 @@ OrderSummary.propTypes = {
   options: PropTypes.object,
 };
 
-export default OrderSummary; 
+export default OrderSummary;

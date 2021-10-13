@@ -6,26 +6,24 @@ import {Row, Col} from 'react-flexbox-grid';
 
 class TripListOptions extends React.Component {
   handleTags(tag, checked){
-    const tagsArray = [...this.props.filters.tags];
-    if(checked) {
-      tagsArray.push(tag);
-      this.props.changeTag(tagsArray)
+    // eslint-disable-next-line no-lone-blocks
+    {/*if(checked) {
       console.log('Adding tag', tag);
       // TODO - use action dispatcher from props
+      this.props.addTag(tag);
     } else {
       console.log('Removing tag', tag);
-      const arr = tagsArray.filter((element) => {
-        return element !== tag
-      })
       // TODO - use action dispatcher from props
-      this.props.changeTag(arr)
-    }
+    */}
+    this.props.changeTag({tag: tag, checked: checked});
   }
 
   handleDuration(type, value){
     console.log('Changing duration', type, value);
     // TODO - use action dispatcher from props
     this.props.changeDuration({type: type, value: value});
+ 
+    
   }
 
   handleSearch(phrase){
@@ -83,6 +81,8 @@ TripListOptions.propTypes = {
   changeSearchPhrase: PropTypes.func,
   changeDuration: PropTypes.func,
   changeTag: PropTypes.func,
+  //addTag: PropTypes.func,
+  //removeTag: PropTypes.func,
 };
 
 export default TripListOptions;
